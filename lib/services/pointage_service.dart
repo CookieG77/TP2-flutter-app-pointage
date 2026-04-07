@@ -49,7 +49,7 @@ class PointageService {
   }
 
   static Future<bool> pointageExistsForToday() async {
-    final pointages = await getPointages();
+    final pointages = await getPointagesForActiveUser();
     return pointageExistsForTodayInGivenList(pointages);
   }
 
@@ -68,7 +68,7 @@ class PointageService {
   static Future<List<Pointage>> getPointagesForActiveUser() async {
     User? user = AuthService.currentUser;
     if (user == null) {
-      return [];
+      return List.empty();
     }
     final pointages = await getPointages();
     return pointages.where((p) => p.userId == user.username).toList();
