@@ -64,4 +64,13 @@ class PointageService {
     final newPointage = Pointage(userId: user.username, dateTime: DateTime.now());
     await addPointage(newPointage);
   }
+
+  static Future<List<Pointage>> getPointagesForActiveUser() async {
+    User? user = AuthService.currentUser;
+    if (user == null) {
+      return [];
+    }
+    final pointages = await getPointages();
+    return pointages.where((p) => p.userId == user.username).toList();
+  }
 }

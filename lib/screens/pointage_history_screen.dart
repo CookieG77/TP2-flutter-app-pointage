@@ -12,7 +12,7 @@ class PointageHistoryScreen extends StatefulWidget {
 
 class _PointageHistoryScreenState extends State<PointageHistoryScreen> {
   Future<List<Pointage>> getPointages() async {
-    return await PointageService.getPointages();
+    return await PointageService.getPointagesForActiveUser();
   }
 
   static String _formatTime(DateTime dateTime) {
