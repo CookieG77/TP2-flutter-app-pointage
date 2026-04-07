@@ -12,6 +12,7 @@ class Pointage {
 
   Map<String, dynamic> toMap() {
     return {
+      'userId': userId,
       'dateTime': dateTime.toIso8601String(),
     };
   }
